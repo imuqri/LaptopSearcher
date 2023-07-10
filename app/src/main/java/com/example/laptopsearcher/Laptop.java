@@ -4,11 +4,13 @@ public class Laptop {
     private String name;
     private String lowestPrice;
     private String imageUrl;
+    private  String linkUrl;
 
-    public Laptop(String name, String lowestPrice, String imageUrl) {
+    public Laptop(String name, String lowestPrice, String imageUrl, String linkUrl) {
         this.name = name;
         this.lowestPrice = lowestPrice;
         this.imageUrl = imageUrl;
+        this.linkUrl = linkUrl;
     }
 
     public String getName() {
@@ -21,5 +23,9 @@ public class Laptop {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getLinkUrl() {
+        return linkUrl;
     }
 }

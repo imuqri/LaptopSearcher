@@ -1,6 +1,8 @@
 package com.example.laptopsearcher;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +66,18 @@ public class LaptopAdapter extends BaseAdapter {
 
         viewHolder.laptopNameTextView.setText(laptop.getName());
         viewHolder.lowestPriceTextView.setText(laptop.getLowestPrice());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Laptop laptop = laptopList.get(position);
+                String url = laptop.getLinkUrl();
+
+                // Open the URL in a browser
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                context.startActivity(browserIntent);
+            }
+        });
 
         return view;
     }

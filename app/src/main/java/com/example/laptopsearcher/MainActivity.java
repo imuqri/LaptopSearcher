@@ -18,7 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.SearchView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,10 +78,18 @@ public class MainActivity extends AppCompatActivity {
                         laptopImageUrls.add(imageUrl);
                     }
 
+                    // Extract laptop link URLs
+                    List<String> laptopLinkUrls = new ArrayList<>();
+                    Elements laptopLinkElements = document.select(".image a");
+                    for (Element linkElement : laptopLinkElements) {
+                        String linkUrl = linkElement.attr("href");
+                        laptopLinkUrls.add(linkUrl);
+                    }
+
                     // Create Laptop objects
                     List<Laptop> laptopList = new ArrayList<>();
                     for (int i = 0; i < laptopNames.size(); i++) {
-                        Laptop laptop = new Laptop(laptopNames.get(i), laptopPrices.get(i), laptopImageUrls.get(i));
+                        Laptop laptop = new Laptop(laptopNames.get(i), laptopPrices.get(i), laptopImageUrls.get(i), laptopLinkUrls.get(i));
                         laptopList.add(laptop);
                     }
 
